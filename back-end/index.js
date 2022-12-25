@@ -8,6 +8,9 @@ const instance = axios.create({
 });
 
 app.get('/api/users', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+
   if (req.query.since) {
     if (/^[0-9]+$/.test(req.query.since)) {
       try {
@@ -45,6 +48,9 @@ app.get('/api/users', async (req, res) => {
 })
 
 app.get('/api/users/:username/details', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+  
   const { username } = req.params
 
   try {
@@ -60,6 +66,9 @@ app.get('/api/users/:username/details', async (req, res) => {
 })
 
 app.get('/api/users/:username/repos', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+  
   const { username } = req.params
 
   try {
