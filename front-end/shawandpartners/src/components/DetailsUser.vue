@@ -74,6 +74,8 @@ export default {
   async mounted() {
     try {
       this.loadingDetails = true;
+      this.loadingRepos = true;
+      
       const res = await userRepository.getUserDetails(this.username);
       this.loadingDetails = false;
 
@@ -81,7 +83,6 @@ export default {
       this.URLProfile = res.data.html_url;
       this.dateLoginCreation = res.data.created_at;
 
-      this.loadingRepos = true;
       const responseRepos = await userRepository.getUserRepos(this.username);
       this.loadingRepos = false;
 
